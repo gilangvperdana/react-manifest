@@ -54,7 +54,7 @@ patches:
         value: 80
       - op: replace
         path: /spec/selector/service_name
-        value: ggg-lb
+        value: ggg
     target:
         kind: Service
         name: servicelb
