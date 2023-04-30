@@ -35,3 +35,26 @@ patches:
     target:
         kind: Service
         name: service
+
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: ggg-lb
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /metadata/labels/service_type
+        value: testing
+      - op: replace
+        path: /metadata/labels/service_name
+        value: ggg-lb
+      - op: replace
+        path: /spec/ports/0/port
+        value: 80
+      - op: replace
+        path: /spec/selector/service_name
+        value: ggg-lb
+    target:
+        kind: Service
+        name: servicelb
