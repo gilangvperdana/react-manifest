@@ -1,4 +1,4 @@
 resources:
   - service.yaml
-  - service-lb.yaml
+  - servicelb.yaml
   - service-account.yaml
