@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: staging
+  name: service
+  labels:
+    service_type: service
+    service_name: service
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    service_name: service
