@@ -1,5 +1,5 @@
 bases:
-  - ../../../../components/service
+  - ../components/service
 
 resources:
   - deployment.yaml
