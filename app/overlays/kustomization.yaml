@@ -53,6 +53,9 @@ patches:
         path: /spec/ports/0/port
         value: 80
       - op: replace
+        path: /spec/ports/0/targetPort
+        value: 80
+      - op: replace
         path: /spec/selector/service_name
         value: ggg
     target:
