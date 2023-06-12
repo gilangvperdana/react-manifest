@@ -61,3 +61,23 @@ patches:
     target:
         kind: Service
         name: servicelb
+
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: ggg-ing-org
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /spec/rules/0/host
+        value: ggg.app.adaptivenetworklab.org
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/name
+        value: ggg
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/port/number
+        value: 80
+    target:
+        kind: Ingress
+        name: ggg-ing-org

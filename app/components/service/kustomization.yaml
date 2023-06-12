@@ -2,3 +2,4 @@ resources:
   - service.yaml
   - servicelb.yaml
   - service-account.yaml
+  - ingress.yaml
