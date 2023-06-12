@@ -20,7 +20,7 @@ spec:
       serviceAccountName: ggg-prod
       containers:
       - name: ggg-prod
-        image: registry.adaptivenetlab.site/testing/ggg:2564cff
+        image: registry.adaptivenetlab.site/testing/ggg:9bfdac7
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
