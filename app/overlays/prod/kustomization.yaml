@@ -1,5 +1,5 @@
 bases:
-  - ../components/service
+  - ../../components/service
 
 resources:
   - deployment.yaml
@@ -8,7 +8,7 @@ patches:
   - patch: |-
       - op: replace
         path: /metadata/name
-        value: ggg
+        value: ggg-prod
     target:
         kind: ServiceAccount
         name: service
@@ -16,7 +16,7 @@ patches:
   - patch: |-
       - op: replace
         path: /metadata/name
-        value: ggg
+        value: ggg-prod
       - op: replace
         path: /metadata/namespace
         value: ggg
@@ -25,13 +25,13 @@ patches:
         value: testing
       - op: replace
         path: /metadata/labels/service_name
-        value: ggg
+        value: ggg-prod
       - op: replace
         path: /spec/ports/0/port
         value: 80
       - op: replace
         path: /spec/selector/service_name
-        value: ggg
+        value: ggg-prod
     target:
         kind: Service
         name: service
@@ -39,42 +39,16 @@ patches:
   - patch: |-
       - op: replace
         path: /metadata/name
-        value: ggg-lb
-      - op: replace
-        path: /metadata/namespace
-        value: ggg
-      - op: replace
-        path: /metadata/labels/service_type
-        value: testing
-      - op: replace
-        path: /metadata/labels/service_name
-        value: ggg-lb
-      - op: replace
-        path: /spec/ports/0/port
-        value: 80
-      - op: replace
-        path: /spec/ports/0/targetPort
-        value: 80
-      - op: replace
-        path: /spec/selector/service_name
-        value: ggg
-    target:
-        kind: Service
-        name: servicelb
-
-  - patch: |-
-      - op: replace
-        path: /metadata/name
-        value: ggg-ing-org
+        value: ggg-prod-ing-org
       - op: replace
         path: /metadata/namespace
         value: ggg
       - op: replace
         path: /spec/rules/0/host
-        value: ggg.app.adaptivenetworklab.org
+        value: ggg-prod.app.adaptivenetworklab.org
       - op: replace
         path: /spec/rules/0/http/paths/0/backend/service/name
-        value: ggg
+        value: ggg-prod
       - op: replace
         path: /spec/rules/0/http/paths/0/backend/service/port/number
         value: 80
