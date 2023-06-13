@@ -20,7 +20,7 @@ spec:
       serviceAccountName: app1-prod
       containers:
       - name: app1-prod
-        image: registry.adaptivenetlab.site/testing/app1:9bfdac7
+        image: registry.adaptivenetlab.site/testing/app1:1c0f377
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
