@@ -1,0 +1,57 @@
+bases:
+  - ../../../components/service
+
+resources:
+  - deployment.yaml
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app2-prod
+    target:
+        kind: ServiceAccount
+        name: service
+    
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app2-prod
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /metadata/labels/service_type
+        value: testing
+      - op: replace
+        path: /metadata/labels/service_name
+        value: app2-prod
+      - op: replace
+        path: /spec/ports/0/port
+        value: 80
+      - op: replace
+        path: /spec/selector/service_name
+        value: app2-prod
+    target:
+        kind: Service
+        name: service
+
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app2-prod-ing-org
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /spec/rules/0/host
+        value: app2-prod.app.adaptivenetworklab.org
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/name
+        value: app2-prod
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/port/number
+        value: 80
+    target:
+        kind: Ingress
+        name: app2-ing-org

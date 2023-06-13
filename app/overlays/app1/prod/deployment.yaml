@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ggg
+  name: app1-prod
+  labels:
+    service_type: testing
+    service_name: app1-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service_name: app1-prod
+  template:
+    metadata:
+      labels:
+        service_type: backend
+        service_name: app1-prod
+    spec:
+      serviceAccountName: app1-prod
+      containers:
+      - name: app1-prod
+        image: registry.adaptivenetlab.site/testing/app1:9bfdac7
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        securityContext:
+          runAsUser: 0
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "400m"
+        env:
+        ## GENERAL ##
+        - name: PORT
+          value: "80"
+        - name: PORT_TEST
+          value: "80"
+        - name: NODE_ENV
+          value: "test"
+      imagePullSecrets:
+      - name: harbor-registry-secret
