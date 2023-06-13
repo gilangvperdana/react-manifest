@@ -28,7 +28,7 @@ patches:
         value: app3-prod
       - op: replace
         path: /spec/ports/0/port
-        value: 80
+        value: 3000
       - op: replace
         path: /spec/selector/service_name
         value: app3-prod
