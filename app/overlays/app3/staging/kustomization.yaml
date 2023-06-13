@@ -80,4 +80,4 @@ patches:
         value: 80
     target:
         kind: Ingress
-        name: app3-ing-org
+        name: ggg-ing-org
