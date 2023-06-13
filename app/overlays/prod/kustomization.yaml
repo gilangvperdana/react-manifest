@@ -45,7 +45,7 @@ patches:
         value: ggg
       - op: replace
         path: /spec/rules/0/host
-        value: gggprod.app.adaptivenetworklab.org
+        value: ggg-prod.app.adaptivenetworklab.org
       - op: replace
         path: /spec/rules/0/http/paths/0/backend/service/name
         value: ggg-prod
