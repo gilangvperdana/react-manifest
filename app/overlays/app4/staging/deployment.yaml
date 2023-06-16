@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: webserver
+        service_name: app4-staging
     spec:
       containers:
         - name: webserver
