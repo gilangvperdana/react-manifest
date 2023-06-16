@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy
+  name: webserver
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: deploy
+      app: webserver
   template:
     metadata:
       labels:
-        app: deploy
+        app: webserver
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: webserver
+          image: php:7.4-apache
           ports:
             - containerPort: 80
           env:
