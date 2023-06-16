@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver
+  name: deploy
 spec:
   replicas: 1
   selector:
@@ -18,8 +18,34 @@ spec:
           ports:
             - containerPort: 80
           env:
-          - name: MESSAGE
-            valueFrom:
-              secretKeyRef:
-                name: message-from-vault
-                key: message
+            - name: MESSAGE
+              valueFrom:
+                secretKeyRef:
+                  name: message-from-vault
+                  key: message
+          volumeMounts:
+            - name: config-html
+              mountPath: /var/www/html
+      volumes:
+        - name: config-html
+          configMap:
+            name: webserver-configmap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webserver-configmap
+data:
+  index.php: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Environment Variables</title>
+    </head>
+    <body>
+      <h1>Environment Variables:</h1>
+      <ul>
+        <li><strong>MESSAGE:</strong> <?php print "".getenv("MESSAGE")."\n"; ?></li>
+      </ul>
+    </body>
+    </html>
