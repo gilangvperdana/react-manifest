@@ -1,0 +1,44 @@
+bases:
+  - ../../../components/service
+  - ../../../components/secret
+  - ../../../components/deployment
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app3
+    target:
+        kind: ServiceAccount
+        name: service
+    
+  - patch: |-
+      - op: replace
+        path: /spec/target/name
+        value: message
+      - op: replace
+        path: /spec/data/0/secretKey
+        value: message
+      - op: replace
+        path: /spec/data/0/remoteRef/key
+        value: message
+      - op: replace
+        path: /spec/data/0/remoteRef/property
+        value: message
+    target:
+        kind: ExternalSecret
+        name: my-cool-secret
+
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: nginx
+      - op: replace
+        # path: /spec/template/spec/containers/0/ports/containerPort
+        value: 80
+    target:
+        kind: Deployment
+        name: deploy
