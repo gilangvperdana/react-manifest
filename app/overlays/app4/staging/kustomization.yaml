@@ -10,8 +10,18 @@ resources:
 patches:
   - patch: |-
       - op: replace
+        path: /spec/provider/vault/server
+        value: "http://172.20.2.226:8200"
+      - op: replace
+        path: /spec/provider/vault/path
+        value: "secret/an-web/"
+    target:
+        kind: SecretStore
+        name: vault-backend
+  - patch: |-
+      - op: replace
         path: /spec/target/name
-        value: message
+        value: message-from-vault
       - op: replace
         path: /spec/data/0/secretKey
         value: message
