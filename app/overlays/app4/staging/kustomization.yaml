@@ -1,20 +1,13 @@
 bases:
-  - ../../../components/service
+  #- ../../../components/service
   - ../../../components/secret
   #- ../../../components/deployment
 
 resources:
   - deployment.yaml
+  - service-account.yaml
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /metadata/name
-        value: app3
-    target:
-        kind: ServiceAccount
-        name: service
-    
   - patch: |-
       - op: replace
         path: /spec/target/name
@@ -31,17 +24,3 @@ patches:
     target:
         kind: ExternalSecret
         name: my-cool-secret
-
-#  - patch: |-
-#      - op: replace
-#        path: /spec/replicas
-#        value: 1
-#      - op: replace
-#        path: /spec/template/spec/containers/0/image
-#        value: nginx
-#      - op: replace
-#        # path: /spec/template/spec/containers/0/ports/containerPort
-#        value: 80
-#    target:
-#        kind: Deployment
-#        name: deploy
