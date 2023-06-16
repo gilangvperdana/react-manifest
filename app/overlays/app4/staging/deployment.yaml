@@ -26,10 +26,15 @@ spec:
           volumeMounts:
             - name: config-html
               mountPath: /var/www/html
+            - name: message-from-vault-secret-volume
+              mountPath: /etc/secret
       volumes:
         - name: config-html
           configMap:
             name: webserver-configmap
+        - name: message-from-vault-secret-volume
+          secret:
+            secretName: message-from-vault
 ---
 apiVersion: v1
 kind: ConfigMap
