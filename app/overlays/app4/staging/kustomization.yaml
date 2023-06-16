@@ -1,11 +1,19 @@
 bases:
   - ../../../components/secret
+  - ../../../components/service
 
 resources:
   - deployment.yaml
-  - service-account.yaml
 
 patches:
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app4
+    target:
+        kind: ServiceAccount
+        name: service
+
   - patch: |-
       - op: replace
         path: /spec/provider/vault/server
@@ -16,6 +24,7 @@ patches:
     target:
         kind: SecretStore
         name: vault-backend
+
   - patch: |-
       - op: replace
         path: /spec/target/name
@@ -32,3 +41,46 @@ patches:
     target:
         kind: ExternalSecret
         name: my-cool-secret
+
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app4-staging
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /metadata/labels/service_type
+        value: testing
+      - op: replace
+        path: /metadata/labels/service_name
+        value: app4-staging
+      - op: replace
+        path: /spec/ports/0/port
+        value: 80
+      - op: replace
+        path: /spec/selector/service_name
+        value: app4-staging
+    target:
+        kind: Service
+        name: service
+
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: app4-staging-ing-org
+      - op: replace
+        path: /metadata/namespace
+        value: ggg
+      - op: replace
+        path: /spec/rules/0/host
+        value: app4-staging.app.adaptivenetworklab.org
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/name
+        value: app4-staging
+      - op: replace
+        path: /spec/rules/0/http/paths/0/backend/service/port/number
+        value: 80
+    target:
+        kind: Ingress
+        name: ggg-ing-org
