@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy
+  name: deploy-app4
+  labels:
+    service_name: app4-staging
 spec:
   replicas: 1
   selector:
@@ -12,6 +14,7 @@ spec:
       labels:
         service_name: app4-staging
     spec:
+      serviceAccountName: app4
       containers:
         - name: webserver
           image: php:7.4-apache
