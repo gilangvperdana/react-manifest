@@ -1,9 +1,10 @@
 bases:
   - ../../../components/service
   - ../../../components/secret
-  - ../../../components/deployment
+  #- ../../../components/deployment
 
 resources:
+  - deployment.yaml
 
 patches:
   - patch: |-
@@ -31,16 +32,16 @@ patches:
         kind: ExternalSecret
         name: my-cool-secret
 
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-      - op: replace
-        path: /spec/template/spec/containers/0/image
-        value: nginx
-      - op: replace
-        # path: /spec/template/spec/containers/0/ports/containerPort
-        value: 80
-    target:
-        kind: Deployment
-        name: deploy
+#  - patch: |-
+#      - op: replace
+#        path: /spec/replicas
+#        value: 1
+#      - op: replace
+#        path: /spec/template/spec/containers/0/image
+#        value: nginx
+#      - op: replace
+#        # path: /spec/template/spec/containers/0/ports/containerPort
+#        value: 80
+#    target:
+#        kind: Deployment
+#        name: deploy
