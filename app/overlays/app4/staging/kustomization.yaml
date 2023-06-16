@@ -3,6 +3,8 @@ bases:
   - ../../../components/secret
   - ../../../components/deployment
 
+resources:
+
 patches:
   - patch: |-
       - op: replace
