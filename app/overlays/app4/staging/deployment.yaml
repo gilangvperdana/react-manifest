@@ -51,6 +51,7 @@ data:
       <h1>Environment Variables:</h1>
       <ul>
         <li><strong>MESSAGE:</strong> <?php print "".getenv("MESSAGE")."\n"; ?></li>
+        <li><strong>MESSAGE FROM CONFIGMAP:</strong> <?php echo file_get_contents('/etc/secret/message'); ?></li>
       </ul>
     </body>
     </html>
