@@ -17,3 +17,9 @@ spec:
           image: nginx
           ports:
             - containerPort: 80
+          env:
+          - name: MESSAGE
+            valueFrom:
+              secretKeyRef:
+                name: message-from-vault
+                key: message

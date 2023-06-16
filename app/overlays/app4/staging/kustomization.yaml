@@ -1,7 +1,5 @@
 bases:
-  #- ../../../components/service
   - ../../../components/secret
-  #- ../../../components/deployment
 
 resources:
   - deployment.yaml
