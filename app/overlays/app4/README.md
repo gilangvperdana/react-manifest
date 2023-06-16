@@ -1,5 +1,5 @@
 ## General
-This project just for testing :
+- This project just for testing :
     - Secret mounted on pod volume
     - Secret mounted on pod env variable
     - All secret source from external Vault with ESO
