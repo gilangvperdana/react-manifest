@@ -20,7 +20,7 @@ spec:
       serviceAccountName: app3-prod
       containers:
       - name: app3-prod
-        image: registry.gbesar.link/testing/app3:9bfdac7
+        image: registry.gbesar.link/testing/app3:9bfd123
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

@@ -71,7 +71,7 @@ patches:
         value: ggg
       - op: replace
         path: /spec/rules/0/host
-        value: app3.link2.gbesar.link
+        value: app3.app.gbesar.link
       - op: replace
         path: /spec/rules/0/http/paths/0/backend/service/name
         value: app3
